@@ -1,6 +1,3 @@
-from os import linesep
-
-
 print("=" * 40, " PART ONE ", "=" * 40)
 
 with open("day08/day08_input.txt", "r") as f:
