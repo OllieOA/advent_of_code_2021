@@ -1,3 +1,5 @@
+import time
+
 print("=" * 40, " PART ONE ", "=" * 40)
 
 
@@ -54,7 +56,7 @@ def dfs_double(graph, start, dest):
 # Generate graph
 with open("day12/day12_input.txt", "r") as f:
     lines = f.readlines()
-
+start_time = time.time()
 
 # Initialise graph
 graph = {"start": [], "end": []}
@@ -76,18 +78,23 @@ for line in lines:
         graph[node2].append(node1)
 
 paths = dfs(graph, "start", "end")
-
-print(f"Final answer: {len(paths)}")
+stop_time = time.time()
+print(
+    f"Final answer: {len(paths)}, found in {(stop_time - start_time) * 1000} milliseconds"
+)
 
 print("=" * 40, " PART TWO ", "=" * 40)
-
+start_time = time.time()
 paths_p2 = dfs_double(graph, "start", "end")
 path_str = []
 for path in paths_p2:
     path_str.append(",".join(path))
 
 path_set = set(path_str)
-print(f"Final answer {len(path_set)}")
+stop_time = time.time()
+print(
+    f"Final answer {len(path_set)}, found in {(stop_time - start_time) * 1000} milliseconds"
+)
 
 
 print("=" * 40, "   END    ", "=" * 40)
